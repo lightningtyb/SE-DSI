@@ -14,4 +14,4 @@ DSI shares a similar way to human recall or retrieval the information that was p
 
 [Paper](resources/KDD23-Semantic-Enhanced_Differentiable_Search_Index_Inspired_by_Learning_Strategies.pdf)
 
-[Slides](resources/Introduction_to_GR.pdf)
+[Slides](resources/20min.pptx)
