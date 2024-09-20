@@ -1,0 +1,30 @@
+1.  构造前缀树 build_trie.py
+    输入数据格式：一行一个identifier
+    代码说明：会先用load_lst函数读取文件，然后运行encode_hash进行编码，最后会调用build_hash_tree, 输出pkl文件
+
+
+2.  推理运行 eval.sh
+
+    重要字段说明：
+        task: “eval” 是用来评估的任务
+        model_name：checkpoint地址
+        valid_file：验证集，
+                    数据样例：{"translation": {"prefix": "Query", "src": "can hives be a sign of pregnancy", "src-id": "68095", "tgt": "what is it called if you get hives while pregnant", "tgt-id": "D868386"}}，
+                    其中“src”对应query，"src-id" 对应query原始编号(作用是为了方便查bug)，“tgt” 对应“identifier”, "tgt-id"对应文章原始docid(作用是为了方便查bug)
+        output_dir: 预测结果
+        trie_path：前缀树
+        path_did2queryID：在计算评价指标时会使用，其中每一行是原始文章ID和对应的identifier
+                        数据样例：D868386	what is it called if you get hives while pregnant
+
+
+    计算指标是MRR@3,5,20 和Hits@1,10
+
+
+
+3.	训练运行 run.sh
+
+	重要字段说明：
+        task: “translation” 是基础的GR，训练使用 MLE优化，推理用前缀树；“DSI” 是DSI论文里的实现
+        train_file: 训练用数据，格式和上面的valid_file一致
+
+        （其他重要字段说明同eval.sh）
